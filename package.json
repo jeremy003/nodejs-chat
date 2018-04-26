@@ -1,0 +1,23 @@
+{
+  "name": "Webcam-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremy003/nodejs-chat.git"
+  },
+  "keywords": ["webrtc"],
+  "author": "Jeremy Unck",
+  "bugs": {
+    "url": "https://github.com/jeremy003/nodejs-chat/issues"
+  },
+  "homepage": "https://github.com/jeremy003/nodejs-chat#readme",
+  "dependencies": {
+    "ws": "^3.3.2"
+  }
+}
