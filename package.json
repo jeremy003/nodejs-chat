@@ -11,13 +11,16 @@
     "type": "git",
     "url": "git+https://github.com/jeremy003/nodejs-chat.git"
   },
-  "keywords": ["webrtc"],
+  "keywords": [
+    "webrtc"
+  ],
   "author": "Jeremy Unck",
   "bugs": {
     "url": "https://github.com/jeremy003/nodejs-chat/issues"
   },
   "homepage": "https://github.com/jeremy003/nodejs-chat#readme",
   "dependencies": {
+    "mysql": "^2.15.0",
     "ws": "^3.3.2"
   }
 }

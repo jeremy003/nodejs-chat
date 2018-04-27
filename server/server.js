@@ -1,9 +1,24 @@
-const HTTPS_PORT = 8443;
+const HTTPS_PORT = 3000;
 
 const fs = require('fs');
 const https = require('https');
 const WebSocket = require('ws');
 const WebSocketServer = WebSocket.Server;
+const mysql = require('mysql');
+
+// Connect to MySQL
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "nodejs-chat",
+  password: "nodejs_is_fUn",
+  database: "nodejs_chat"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected to MySQL database.");
+});
+
 
 // Yes, TLS is required
 const serverConfig = {
@@ -21,6 +36,12 @@ const handleRequest = function(request, response) {
   if(request.url === '/') {
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.end(fs.readFileSync('client/index.html'));
+  } else if(request.url === '/login.js') {
+    response.writeHead(200, {'Content-Type': 'application/javascript'});
+    response.end(fs.readFileSync('client/login.js'));
+  } else if(request.url === '/chat.html') {
+    response.writeHead(200, {'Content-Type': 'application/javascript'});
+    response.end(fs.readFileSync('client/chat.html'));
   } else if(request.url === '/webrtc.js') {
     response.writeHead(200, {'Content-Type': 'application/javascript'});
     response.end(fs.readFileSync('client/webrtc.js'));
@@ -51,9 +72,4 @@ wss.broadcast = function(data) {
   });
 };
 
-console.log('Server running. Visit https://localhost:' + HTTPS_PORT + ' in Firefox/Chrome.\n\n\
-Some important notes:\n\
-  * Note the HTTPS; there is no HTTP -> HTTPS redirect.\n\
-  * You\'ll also need to accept the invalid TLS certificate.\n\
-  * Some browsers or OSs may not allow the webcam to be used by multiple pages at once. You may need to use two different browsers or machines.\n'
-);
+console.log('Server running on port 3000...');
